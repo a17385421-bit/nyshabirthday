@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ff4f8b">
+
+  <title>For Mommy — Nysha ❤️</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="liquid-bg" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+    <span class="blob blob-4"></span>
+  </div>
+
+  <div class="noise" aria-hidden="true"></div>
+
+  <div id="hearts" aria-hidden="true"></div>
+
+  <main>
+
+    <!-- INTRO -->
+    <section class="screen hero active" id="hero">
+
+      <div class="tiny-label">pssst…</div>
+
+      <div class="hero-heart">♡</div>
+
+      <p class="eyebrow">
+        someone's birthday today...
+      </p>
+
+      <h1 id="nameReveal">
+        NY<span>S</span>HA
+      </h1>
+
+      <p class="nickname">
+        aka <strong>Mommy</strong> 💗
+      </p>
+
+      <button class="primary" id="openBtn">
+        Open your surprise <span>→</span>
+      </button>
+
+      <div class="scroll-hint">
+        tap & let the magic happen
+      </div>
+
+    </section>
+
+
+    <!-- BIRTHDAY -->
+    <section class="screen" id="birthday">
+
+      <div class="glass-card birthday-card">
+
+        <div class="card-kicker">
+          TODAY'S MAIN CHARACTER
+        </div>
+
+        <div class="big-heart">
+          ♥
+        </div>
+
+        <h2>
+          Happy Birthday,
+          <br>
+          <em>Nysha.</em>
+        </h2>
+
+        <p>
+          To the girl I somehow ended up calling
+          <b>Mommy</b>… 😭❤️
+        </p>
+
+        <button class="ghost next" data-next="tease">
+          Okay, continue →
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- TEASING -->
+    <section class="screen" id="tease">
+
+      <div class="section-title">
+
+        <span>
+          01 / important investigation
+        </span>
+
+        <h2>
+          Things I <em>tolerate</em>
+          <br>
+          about you 😌
+        </h2>
+
+      </div>
+
+
+      <div class="cards">
+
+        <article class="mini-card">
+          <b>01</b>
+          <span>
+            Your unnecessary drama.
+          </span>
+        </article>
+
+        <article class="mini-card">
+          <b>02</b>
+          <span>
+            Your random mood changes.
+          </span>
+        </article>
+
+        <article class="mini-card">
+          <b>03</b>
+          <span>
+            Your professional-level ability to annoy me.
+          </span>
+        </article>
+
+        <article class="mini-card">
+          <b>04</b>
+          <span>
+            And somehow… you're still my favourite. 🙄❤️
+          </span>
+        </article>
+
+      </div>
+
+
+      <button class="primary next" data-next="shots">
+        Proceed to the serious part →
+      </button>
+
+    </section>
+
+
+    <!-- DRINK JOKE -->
+    <section class="screen" id="shots">
+
+      <div class="glass-card drink-card">
+
+        <div class="card-kicker">
+          MOMMY'S BIRTHDAY DRINK COUNTER
+        </div>
+
+        <div class="martini">
+          🍸
+        </div>
+
+        <h2>
+          Aaj kitne shots
+          <br>
+          <em>maare vodka ke?</em>
+        </h2>
+
+        <div class="counter">
+          <span id="shotCount">0</span>
+          <small>shots</small>
+        </div>
+
+        <p class="hint">
+          Answer honestly, Mommy.
+          I am conducting very serious research. 👀
+        </p>
+
+        <div class="button-row">
+
+          <button class="ghost" id="zeroBtn">
+            0, obviously 😇
+          </button>
+
+          <button class="primary" id="suspiciousBtn">
+            I did NOT drink 👀
+          </button>
+
+        </div>
+
+        <p class="reaction" id="drinkReaction"></p>
+
+      </div>
+
+    </section>
+
+
+    <!-- EMOTIONAL TRANSITION -->
+    <section class="screen" id="soft">
+
+      <div class="soft-transition">
+
+        <div class="card-kicker">
+          okay… enough bullying.
+        </div>
+
+        <div class="ripple-heart">
+          ♡
+        </div>
+
+        <h2>
+          Now the real part. 🥹
+        </h2>
+
+        <p>
+          I don't have a thousand photos or some giant friendship montage.
+        </p>
+
+        <p>
+          Just one simple thing:
+        </p>
+
+        <strong>
+          you slowly became a part of my life. ❤️
+        </strong>
+
+        <button class="primary next" data-next="song">
+          There's one song for this →
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- SONG -->
+    <section class="screen song-screen" id="song">
+
+      <div class="song-orbit">
+
+        <div class="vinyl">
+          ♪
+        </div>
+
+      </div>
+
+      <div class="card-kicker">
+        for you, Mommy
+      </div>
+
+      <h2>
+        Dheere…
+        <br>
+        <em>dheere…</em>
+      </h2>
+
+      <p class="song-note">
+        A little song. A little feeling.
+        <br>
+        And a lot of pink hearts. 💗
+      </p>
+
+      <button class="primary" id="playBtn">
+        Play your song <span>♪</span>
+      </button>
+
+      <p class="tiny-note">
+        Add your legally obtained audio as
+        <b>assets/song.mp3</b>
+        to enable playback.
+      </p>
+
+      <audio id="songAudio" preload="auto">
+        <source src="assets/song.mp3" type="audio/mpeg">
+      </audio>
+
+      <button class="ghost next" data-next="forever">
+        One last thing →
+      </button>
+
+    </section>
+
+
+    <!-- QUESTION -->
+    <section class="screen" id="forever">
+
+      <div class="glass-card question-card">
+
+        <div class="card-kicker">
+          ONE LAST QUESTION
+        </div>
+
+        <div class="big-heart pulse">
+          ♥
+        </div>
+
+        <h2>
+          Will you stay
+          <br>
+          <em>my Mommy</em> forever?
+        </h2>
+
+        <div class="choice-area">
+
+          <button class="primary" id="yesBtn">
+            YES ❤️
+          </button>
+
+          <button class="ghost" id="noBtn">
+            NO 😈
+          </button>
+
+        </div>
+
+        <p class="reaction" id="answerReaction"></p>
+
+      </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+    <section class="screen final-screen" id="final">
+
+      <div class="final-content">
+
+        <div class="card-kicker">
+          FOR NYSHA
+        </div>
+
+        <div class="heart-burst">
+          ♥
+        </div>
+
+        <h2>
+          Happy Birthday,
+          <br>
+          <em>Mommy. ❤️</em>
+        </h2>
+
+        <p>
+          Keep smiling.
+          <br>
+          Keep being you.
+          <br>
+          Keep annoying me.
+        </p>
+
+        <p class="final-line">
+          And please…
+          <br>
+          <b>don't ever become normal.</b> 😭
+        </p>
+
+        <div class="signature">
+          — your favourite person 😌❤️
+        </div>
+
+        <div class="made">
+          made specially for Mommy
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <div class="progress" aria-hidden="true">
+    <i id="progressBar"></i>
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
