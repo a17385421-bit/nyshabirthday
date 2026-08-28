@@ -5,7 +5,9 @@ const progress = document.getElementById("progressBar");
 let current = 0;
 
 
-/* FLOATING HEARTS ❤️ */
+/* =========================
+   FLOATING HEARTS ❤️
+========================= */
 
 function spawnHeart() {
 
@@ -14,26 +16,26 @@ function spawnHeart() {
   heart.className = "float-heart";
 
   heart.textContent =
-    Math.random() > 0.22 ? "♥" : "♡";
+    Math.random() > 0.2 ? "♥" : "♡";
 
   heart.style.left =
-    (Math.random() * 100) + "vw";
+    Math.random() * 100 + "vw";
 
   heart.style.fontSize =
-    (10 + Math.random() * 28) + "px";
+    10 + Math.random() * 28 + "px";
 
   heart.style.setProperty(
     "--drift",
-    (Math.random() * 180 - 90) + "px"
+    Math.random() * 180 - 90 + "px"
   );
 
   heart.style.setProperty(
     "--rot",
-    (Math.random() * 90 - 45) + "deg"
+    Math.random() * 90 - 45 + "deg"
   );
 
   heart.style.animationDuration =
-    (8 + Math.random() * 10) + "s";
+    8 + Math.random() * 10 + "s";
 
   hearts.appendChild(heart);
 
@@ -43,31 +45,36 @@ function spawnHeart() {
 }
 
 
-/* Start hearts */
+/* Initial hearts */
 
-for (let i = 0; i < 16; i++) {
+for (let i = 0; i < 18; i++) {
 
-  setTimeout(
-    spawnHeart,
-    i * 450
-  );
+  setTimeout(() => {
+    spawnHeart();
+  }, i * 400);
 
 }
 
-setInterval(
-  spawnHeart,
-  700
-);
+
+/* Continuous hearts */
+
+setInterval(() => {
+
+  spawnHeart();
+
+}, 750);
 
 
-/* PAGE TRANSITIONS */
+/* =========================
+   PAGE NAVIGATION
+========================= */
 
 function show(id) {
 
-  const next =
+  const nextScreen =
     document.getElementById(id);
 
-  if (!next) return;
+  if (!nextScreen) return;
 
   screens.forEach(screen => {
 
@@ -75,14 +82,17 @@ function show(id) {
 
   });
 
-  next.classList.add("active");
+  nextScreen.classList.add("active");
 
   current =
-    screens.indexOf(next);
+    screens.indexOf(nextScreen);
 
-  progress.style.width =
-    ((current) /
-    (screens.length - 1) * 100) + "%";
+  if (progress) {
+
+    progress.style.width =
+      (current / (screens.length - 1) * 100) + "%";
+
+  }
 
   window.scrollTo({
     top: 0,
@@ -90,32 +100,42 @@ function show(id) {
   });
 
 
-  /* Heart burst during transition */
+  /* Small heart transition */
 
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 8; i++) {
 
-    setTimeout(
-      spawnHeart,
-      i * 80
-    );
+    setTimeout(() => {
+
+      spawnHeart();
+
+    }, i * 80);
 
   }
 
 }
 
 
-/* OPEN SURPRISE ❤️ */
+/* =========================
+   OPEN SURPRISE ❤️
+========================= */
 
-document
-  .getElementById("openBtn")
-  .onclick = () => {
+const openBtn =
+  document.getElementById("openBtn");
+
+if (openBtn) {
+
+  openBtn.onclick = () => {
 
     show("birthday");
 
   };
 
+}
 
-/* ALL NEXT BUTTONS */
+
+/* =========================
+   NEXT BUTTONS
+========================= */
 
 document
   .querySelectorAll(".next")
@@ -123,139 +143,199 @@ document
 
     button.onclick = () => {
 
-      show(
-        button.dataset.next
-      );
+      const destination =
+        button.dataset.next;
+
+      if (destination) {
+
+        show(destination);
+
+      }
 
     };
 
   });
 
 
-/* VODKA JOKE 🍸 */
+/* =========================
+   VODKA JOKE 🍸
+========================= */
 
 const shotCount =
   document.getElementById("shotCount");
 
-const reaction =
+const drinkReaction =
   document.getElementById("drinkReaction");
 
+const zeroBtn =
+  document.getElementById("zeroBtn");
 
-document
-  .getElementById("zeroBtn")
-  .onclick = () => {
+const suspiciousBtn =
+  document.getElementById("suspiciousBtn");
 
-    shotCount.textContent = "0";
 
-    reaction.textContent =
-      "Hmmmmm… suspicious. 🤨 I believe you, Mommy. (I absolutely don't.) 😭";
+if (zeroBtn) {
+
+  zeroBtn.onclick = () => {
+
+    if (shotCount) {
+
+      shotCount.textContent = "0";
+
+    }
+
+    if (drinkReaction) {
+
+      drinkReaction.textContent =
+        "Hmmmmm… suspicious. 🤨 I believe you, Mommy. (I absolutely don't.) 😭";
+
+    }
 
   };
 
+}
 
-document
-  .getElementById("suspiciousBtn")
-  .onclick = () => {
+
+if (suspiciousBtn) {
+
+  suspiciousBtn.onclick = () => {
 
     const number =
       Math.floor(Math.random() * 5) + 1;
 
-    shotCount.textContent =
-      number;
+    if (shotCount) {
 
-    reaction.textContent =
-      `According to my highly scientific investigation: ${number} suspicious shot${number > 1 ? "s" : ""}. 🍸😂`;
+      shotCount.textContent =
+        number;
+
+    }
+
+    if (drinkReaction) {
+
+      drinkReaction.textContent =
+        `According to my highly scientific investigation: ${number} suspicious shot${number > 1 ? "s" : ""}. 🍸😂`;
+
+    }
 
   };
 
+}
 
-/* SONG PLAYER 🎵 */
+
+/* =========================
+   SONG BUTTON 🎵
+========================= */
 
 const audio =
   document.getElementById("songAudio");
 
-const playButton =
+const playBtn =
   document.getElementById("playBtn");
 
+if (playBtn) {
 
-playButton.onclick = () => {
+  playBtn.onclick = () => {
 
-  audio
-    .play()
-    .then(() => {
+    if (!audio) return;
 
-      playButton.innerHTML =
-        "Playing for Mommy ♪";
+    audio.play()
+      .then(() => {
 
-    })
-    .catch(() => {
+        playBtn.innerHTML =
+          "Playing for Mommy ♪";
 
-      playButton.innerHTML =
-        "Add assets/song.mp3 first";
+      })
+      .catch(() => {
 
-    });
+        playBtn.innerHTML =
+          "Add your song first ♪";
 
-};
+      });
+
+  };
+
+}
 
 
-/* NO BUTTON 😈 */
+/* =========================
+   NO BUTTON 😈
+========================= */
 
-const noButton =
+const noBtn =
   document.getElementById("noBtn");
 
-const answer =
+const answerReaction =
   document.getElementById("answerReaction");
 
 let noMoves = 0;
 
 
-noButton.onclick = () => {
+if (noBtn) {
 
-  noMoves++;
+  noBtn.onclick = () => {
 
-  const x =
-    Math.random() * 180 - 90;
+    noMoves++;
 
-  const y =
-    Math.random() * 100 - 50;
+    const x =
+      Math.random() * 180 - 90;
 
-  noButton.style.transform =
-    `translate(${x}px, ${y}px)`;
+    const y =
+      Math.random() * 100 - 50;
 
-
-  if (noMoves < 3) {
-
-    answer.textContent =
-      "Nice try 😭";
-
-  } else {
-
-    answer.textContent =
-      "Mommy, you're not escaping. 😌❤️";
-
-  }
-
-};
+    noBtn.style.transform =
+      `translate(${x}px, ${y}px)`;
 
 
-/* YES BUTTON ❤️ */
+    if (answerReaction) {
 
-document
-  .getElementById("yesBtn")
-  .onclick = () => {
+      if (noMoves < 3) {
 
-    answer.textContent =
-      "I KNEW IT. ❤️";
+        answerReaction.textContent =
+          "Nice try 😭";
+
+      } else {
+
+        answerReaction.textContent =
+          "Mommy, you're not escaping. 😌❤️";
+
+      }
+
+    }
+
+  };
+
+}
+
+
+/* =========================
+   YES BUTTON ❤️
+========================= */
+
+const yesBtn =
+  document.getElementById("yesBtn");
+
+
+if (yesBtn) {
+
+  yesBtn.onclick = () => {
+
+    if (answerReaction) {
+
+      answerReaction.textContent =
+        "I KNEW IT. ❤️";
+
+    }
 
 
     /* Heart explosion */
 
-    for (let i = 0; i < 35; i++) {
+    for (let i = 0; i < 45; i++) {
 
-      setTimeout(
-        spawnHeart,
-        i * 40
-      );
+      setTimeout(() => {
+
+        spawnHeart();
+
+      }, i * 35);
 
     }
 
@@ -264,62 +344,75 @@ document
 
       show("final");
 
-    }, 900);
+    }, 1000);
 
   };
 
-/* FINAL P.S. SURPRISE 👀❤️ */
+}
 
-const psBtn = document.getElementById("psBtn");
-const psMessage = document.getElementById("psMessage");
+
+/* =========================
+   FINAL P.S. SURPRISE 👀❤️
+========================= */
+
+const psBtn =
+  document.getElementById("psBtn");
+
+const psMessage =
+  document.getElementById("psMessage");
+
 
 if (psBtn) {
+
   psBtn.onclick = () => {
 
-    psMessage.textContent =
-      "Aur haan… mujhe abhi bhi lagta hai aaj tumne vodka pi hai. 👀🍸😂";
+    if (psMessage) {
 
-    psBtn.innerHTML = "HAHA I KNEW IT 😭❤️";
+      psMessage.textContent =
+        "Aur haan… mujhe abhi bhi lagta hai aaj tumne vodka pi hai. 👀🍸😂";
 
-    for (let i = 0; i < 45; i++) {
-      setTimeout(() => {
-        spawnHeart();
-      }, i * 35);
     }
 
-    setTimeout(() => {
-      psMessage.textContent =
-        "Okay okay… Happy Birthday again, Mommy. 🥹❤️";
-    }, 2500);
 
-  };
-}
-/* FINAL P.S. SURPRISE 👀❤️ */
+    psBtn.textContent =
+      "HAHA I KNEW IT 😭❤️";
 
-const psBtn = document.getElementById("psBtn");
-const psMessage = document.getElementById("psMessage");
 
-if (psBtn) {
-  psBtn.onclick = () => {
+    /* BIG HEART EXPLOSION */
 
-    psMessage.textContent =
-      "Aur haan… mujhe abhi bhi lagta hai aaj tumne vodka pi hai. 👀🍸😂";
+    for (let i = 0; i < 80; i++) {
 
-    psBtn.textContent = "HAHA I KNEW IT 😭❤️";
-
-    for (let i = 0; i < 45; i++) {
       setTimeout(() => {
+
         spawnHeart();
-      }, i * 35);
+
+      }, i * 25);
+
     }
 
+
     setTimeout(() => {
-      psMessage.textContent =
-        "Okay okay… Happy Birthday again, Mommy. 🥹❤️";
-    }, 2500);
+
+      if (psMessage) {
+
+        psMessage.textContent =
+          "Okay okay… Happy Birthday again, Mommy. 🥹❤️";
+
+      }
+
+    }, 2800);
 
   };
-}
-/* INITIAL PROGRESS */
 
-progress.style.width = "0%";
+}
+
+
+/* =========================
+   INITIAL PROGRESS
+========================= */
+
+if (progress) {
+
+  progress.style.width = "0%";
+
+}
