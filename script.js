@@ -268,7 +268,32 @@ document
 
   };
 
+/* FINAL P.S. SURPRISE 👀❤️ */
 
+const psBtn = document.getElementById("psBtn");
+const psMessage = document.getElementById("psMessage");
+
+if (psBtn) {
+  psBtn.onclick = () => {
+
+    psMessage.textContent =
+      "Aur haan… mujhe abhi bhi lagta hai aaj tumne vodka pi hai. 👀🍸😂";
+
+    psBtn.innerHTML = "HAHA I KNEW IT 😭❤️";
+
+    for (let i = 0; i < 45; i++) {
+      setTimeout(() => {
+        spawnHeart();
+      }, i * 35);
+    }
+
+    setTimeout(() => {
+      psMessage.textContent =
+        "Okay okay… Happy Birthday again, Mommy. 🥹❤️";
+    }, 2500);
+
+  };
+}
 /* INITIAL PROGRESS */
 
 progress.style.width = "0%";
